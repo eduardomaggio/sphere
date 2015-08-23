@@ -70,7 +70,7 @@ inline double NormalizeAngleDeg( double angle )
 {
   return NormalizeAngle(
     angle,
-    DEEGREE_HALF_ARC,
+    DEGREE_HALF_ARC,
     DEGREE_FULL_ARC,
     DEGREE_HALF_ARC);
 }
@@ -96,3 +96,5 @@ inline double NormalizeAngleRad( double angle )
     RADIAN_FULL_ARC,
     RADIAN_HALF_ARC);
 }
+
+}// namespace maggio
