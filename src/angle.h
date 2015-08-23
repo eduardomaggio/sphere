@@ -41,60 +41,65 @@ namespace maggio
 
 
 // general wrap
-inline double NormalizeAngle( 
-  double angle, 
-  const double offset,
-  const double full_arc,
-  const double half_arc)
-  {
-    double resp = fmod(angle,full_arc) + offset;
-    if ( resp < 0 )
-      resp += full_arc;
-    return resp - offset;
-  }
+inline double
+NormalizeAngle( 
+	double angle, 
+	const double offset,
+	const double full_arc,
+	const double half_arc)
+{
+	double resp = fmod( angle + offset, full_arc );
+ 	if ( resp < 0 )
+ 		resp += full_arc;
+ 	return resp - offset;
+}
 
 
 // wrap angle (deg) to the interval [0, 360.0)
-inline double UnsignedAngleDeg( double angle )
+inline double
+UnsignedAngleDeg( double angle )
 {
-  return NormalizeAngle(
-    angle,
-    0,
-    DEGREE_FULL_ARC,
-    DEGREE_HALF_ARC);
+	return NormalizeAngle(
+		angle,
+ 		0,
+ 		DEGREE_FULL_ARC,
+ 		DEGREE_HALF_ARC);
 }
 
 
 // wrap angle (deg) to the interval [-180.0, 180.0)
-inline double NormalizeAngleDeg( double angle )
+inline double
+NormalizeAngleDeg( double angle )
 {
-  return NormalizeAngle(
-    angle,
-    DEGREE_HALF_ARC,
-    DEGREE_FULL_ARC,
-    DEGREE_HALF_ARC);
+	return NormalizeAngle(
+ 		angle,
+ 		DEGREE_HALF_ARC,
+		DEGREE_FULL_ARC,
+		DEGREE_HALF_ARC);
 }
 
 
 // wrap angle (rad) to the interval [0, 2PI)
-inline double UnsignedAngleRad( double angle )
+inline double
+UnsignedAngleRad( double angle )
 {
-  return NormalizeAngle(
-    angle,
-    0,
-    RADIAN_FULL_ARC,
-    RADIAN_HALF_ARC);
+	return NormalizeAngle(
+		angle,
+		0,
+		RADIAN_FULL_ARC,
+		RADIAN_HALF_ARC);
 }
 
 
 // wrap angle (rad) to the interval [-PI, PI)
-inline double NormalizeAngleRad( double angle )
+inline double
+NormalizeAngleRad( double angle )
 {
-  return NormalizeAngle(
-    angle,
-    RADIAN_HALF_ARC,
-    RADIAN_FULL_ARC,
-    RADIAN_HALF_ARC);
+	return NormalizeAngle(
+		angle,
+		RADIAN_HALF_ARC,
+		RADIAN_FULL_ARC,
+		RADIAN_HALF_ARC);
 }
 
 }// namespace maggio

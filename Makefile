@@ -4,12 +4,12 @@ CC := g++ # This is the main compiler
 # CC := clang --analyse # and comment out the linker last line for sanity
 SRCDIR := src
 BUILDDIR := build
-TARGET := bin/hello
+TARGET := bin/test
 
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
-CFLAGS := -g # -Wall
+CFLAGS := -g -std=c++11 # -Wall
 LIB := -pthread -L lib
 INC := -I include
 
